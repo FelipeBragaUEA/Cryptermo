@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Personal Health Records</title>
+  <style>
+    body {
+      background-color: #f3f3f3;
+      color: #333;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #3a7bd5;
+      padding: 20px;
+      color: #fff;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f5f5f5;
+    }
+
+    footer {
+      background-color: #333;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Personal Health Records</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <a href="#">Medical History</a>
+      <a href="#">Lab Results</a>
+      <a href="#">Prescriptions</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Welcome to your personal health records!</h2>
+      <p>View, manage, and update your health information securely.</p>
+    </section>
+
+    <section>
+      <h2>Profile Information</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob" placeholder="Enter your date of birth">
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" placeholder="Enter your address">
+        
+        <button type="submit">Save Profile</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Family Health History</h2>
+      <form>
+        <label for="tuberculosis">Tuberculosis:</label>
+        <input type="checkbox" id="tuberculosis" name="tuberculosis">
+        <label for="diabetes">Diabetes:</label>
+        <input type="checkbox" id="diabetes" name="diabetes">
+        <label for="heart-disease">Heart Diseases:</label>
+        <input type="checkbox" id="heart-disease" name="heart-disease">
+        <label for="cancer">Cancer:</label>
+        <input type="checkbox" id="cancer" name="cancer">
+        <label for="high-blood-pressure">High Blood Pressure:</label>
+        <input type="checkbox" id="high-blood-pressure" name="high-blood-pressure">
+        <label for="asthma">Asthma:</label>
+        <input type="checkbox" id="asthma" name="asthma">
+        <label for="mental-disease">Mental Disease:</label>
+        <input type="checkbox" id="mental-disease" name="mental-disease">
+        <label for="lupus">Lupus:</label>
+        <input type="checkbox" id="lupus" name="lupus">
+        <label for="others">Others:</label>
+        <input type="text" id="others" name="others" placeholder="Enter other family health conditions">
+        
+        <button type="submit">Save Family Health History</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Personal Record History</h2>
+      <form>
+        <label for="tuberculosis">Tuberculosis:</label>
+        <input type="checkbox" id="tuberculosis" name="tuberculosis">
+        <label for="diabetes">Diabetes:</label>
+        <input type="checkbox" id="diabetes" name="diabetes">
+        <label for="heart-disease">Heart Diseases:</label>
+        <input type="checkbox" id="heart-disease" name="heart-disease">
+        <label for="cancer">Cancer:</label>
+        <input type="checkbox" id="cancer" name="cancer">
+        <label for="high-blood-pressure">High Blood Pressure:</label>
+        <input type="checkbox" id="high-blood-pressure" name="high-blood-pressure">
+        <label for="asthma">Asthma:</label>
+        <input type="checkbox" id="asthma" name="asthma">
+        <label for="mental-disease">Mental Disease:</label>
+        <input type="checkbox" id="mental-disease" name="mental-disease">
+        <label for="lupus">Lupus:</label>
+        <input type="checkbox" id="lupus" name="lupus">
+        <label for="others">Others:</label>
+        <input type="text" id="others" name="others" placeholder="Enter other family health conditions">
+        
+        <button type="submit">Save Family Health History</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Medical History</h2>
+      <ul>
+        <!-- Display the user's medical history as a list -->
+        <li>Medical event 1</li>
+        <li>Medical event 2</li>
+        <!-- Add more items dynamically using JavaScript if needed -->
+      </ul>
+    </section>
+
+    <section>
+      <h2>Lab Results</h2>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Test Name</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>2023-06-01</td>
+          <td>Blood Pressure</td>
+          <td>120/80 mmHg</td>
+        </tr>
+        <!-- Add more rows dynamically using JavaScript if needed -->
+      </table>
+    </section>
+
+    <section>
+      <h2>Prescriptions</h2>
+      <ul>
+        <!-- Display the user's prescriptions as a list -->
+        <li>Prescription 1</li>
+        <li>Prescription 2</li>
+        <!-- Add more items dynamically using JavaScript if needed -->
+      </ul>
+    </section>
+
+    <!-- Add more sections as needed for additional features or information -->
+
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Your Personal Health Records</p>
+  </footer>
+</body>
+</html>
