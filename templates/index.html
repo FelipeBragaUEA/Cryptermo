@@ -97,8 +97,8 @@
     <nav>
       <a href="#">Home</a>
       <a href="#">Profile</a>
-      <a href="#">Medical History</a>
-      <a href="#">Lab Results</a>
+      <a href="/saved_profiles.html">Medical History</a>
+      <a href="/lab_results.html">Lab Results</a>
       <a href="#">Prescriptions</a>
     </nav>
   </header>
@@ -114,14 +114,12 @@
       <form>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Enter your name">
-        
+
         <label for="dob">Date of Birth:</label>
         <input type="text" id="dob" name="dob" placeholder="Enter your date of birth">
-        
+
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" placeholder="Enter your address">
-        
-        <button type="submit">Save Profile</button>
       </form>
     </section>
 
@@ -146,80 +144,126 @@
         <input type="checkbox" id="lupus" name="lupus">
         <label for="others">Others:</label>
         <input type="text" id="others" name="others" placeholder="Enter other family health conditions">
-        
-        <button type="submit">Save Family Health History</button>
       </form>
     </section>
 
     <section>
       <h2>Personal Record History</h2>
-      <form>
-        <label for="tuberculosis">Tuberculosis:</label>
-        <input type="checkbox" id="tuberculosis" name="tuberculosis">
-        <label for="diabetes">Diabetes:</label>
-        <input type="checkbox" id="diabetes" name="diabetes">
-        <label for="heart-disease">Heart Diseases:</label>
-        <input type="checkbox" id="heart-disease" name="heart-disease">
-        <label for="cancer">Cancer:</label>
-        <input type="checkbox" id="cancer" name="cancer">
-        <label for="high-blood-pressure">High Blood Pressure:</label>
-        <input type="checkbox" id="high-blood-pressure" name="high-blood-pressure">
-        <label for="asthma">Asthma:</label>
-        <input type="checkbox" id="asthma" name="asthma">
-        <label for="mental-disease">Mental Disease:</label>
-        <input type="checkbox" id="mental-disease" name="mental-disease">
-        <label for="lupus">Lupus:</label>
-        <input type="checkbox" id="lupus" name="lupus">
-        <label for="others">Others:</label>
-        <input type="text" id="others" name="others" placeholder="Enter other family health conditions">
-        
-        <button type="submit">Save Family Health History</button>
+      <form id="personal-record-form">
+        <label for="personal-event">Add Personal Event:</label>
+        <input type="text" id="personal-event" name="personal-event" placeholder="Enter personal event">
+        <button type="button" onclick="addPersonalEvent()">Add</button>
       </form>
-    </section>
-
-    <section>
-      <h2>Medical History</h2>
-      <ul>
-        <!-- Display the user's medical history as a list -->
-        <li>Medical event 1</li>
-        <li>Medical event 2</li>
-        <!-- Add more items dynamically using JavaScript if needed -->
+      <ul id="personal-record-list">
+        <!-- Personal events will be dynamically added here -->
       </ul>
     </section>
 
     <section>
       <h2>Lab Results</h2>
-      <table>
+      <form id="lab-results-form">
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" placeholder="Enter date">
+        <label for="test-name">Test Name:</label>
+        <input type="text" id="test-name" name="test-name" placeholder="Enter test name">
+        <label for="result">Result:</label>
+        <input type="text" id="result" name="result" placeholder="Enter result">
+        <button type="button" onclick="addLabResult()">Add</button>
+      </form>
+      <table id="lab-results-table">
         <tr>
           <th>Date</th>
           <th>Test Name</th>
           <th>Result</th>
         </tr>
-        <tr>
-          <td>2023-06-01</td>
-          <td>Blood Pressure</td>
-          <td>120/80 mmHg</td>
-        </tr>
-        <!-- Add more rows dynamically using JavaScript if needed -->
+        <!-- Lab results will be dynamically added here -->
       </table>
     </section>
 
     <section>
       <h2>Prescriptions</h2>
-      <ul>
-        <!-- Display the user's prescriptions as a list -->
-        <li>Prescription 1</li>
-        <li>Prescription 2</li>
-        <!-- Add more items dynamically using JavaScript if needed -->
+      <form id="prescriptions-form">
+        <label for="prescription">Add Prescription:</label>
+        <input type="text" id="prescription" name="prescription" placeholder="Enter prescription">
+        <button type="button" onclick="addPrescription()">Add</button>
+      </form>
+      <ul id="prescriptions-list">
+        <!-- Prescriptions will be dynamically added here -->
       </ul>
     </section>
 
     <!-- Add more sections as needed for additional features or information -->
+
+    <section>
+      <button type="button" onclick="saveProfile()">Save Profile</button>
+    </section>
 
   </main>
 
   <footer>
     <p>&copy; 2023 Your Personal Health Records</p>
   </footer>
+
+  <script>
+    function addPersonalEvent() {
+      var personalEventInput = document.getElementById("personal-event");
+      var personalEvent = personalEventInput.value;
+      personalEventInput.value = "";
+
+      var personalEventList = document.getElementById("personal-record-list");
+      var listItem = document.createElement("li");
+      listItem.innerText = personalEvent;
+      personalEventList.appendChild(listItem);
+    }
+
+    function addLabResult() {
+      var dateInput = document.getElementById("date");
+      var testNameInput = document.getElementById("test-name");
+      var resultInput = document.getElementById("result");
+
+      var date = dateInput.value;
+      var testName = testNameInput.value;
+      var result = resultInput.value;
+
+      dateInput.value = "";
+      testNameInput.value = "";
+      resultInput.value = "";
+
+      var labResultsTable = document.getElementById("lab-results-table");
+      var newRow = labResultsTable.insertRow();
+      var dateCell = newRow.insertCell();
+      var testNameCell = newRow.insertCell();
+      var resultCell = newRow.insertCell();
+
+      dateCell.innerText = date;
+      testNameCell.innerText = testName;
+      resultCell.innerText = result;
+    }
+
+    function addPrescription() {
+      var prescriptionInput = document.getElementById("prescription");
+      var prescription = prescriptionInput.value;
+      prescriptionInput.value = "";
+
+      var prescriptionsList = document.getElementById("prescriptions-list");
+      var listItem = document.createElement("li");
+      listItem.innerText = prescription;
+      prescriptionsList.appendChild(listItem);
+    }
+
+    function saveProfile() {
+      var nameInput = document.getElementById("name");
+      var dobInput = document.getElementById("dob");
+      var addressInput = document.getElementById("address");
+
+      var name = nameInput.value;
+      var dob = dobInput.value;
+      var address = addressInput.value;
+
+      // Perform saving logic here (e.g., send data to server)
+
+      alert("Profile saved!");
+    }
+  </script>
 </body>
 </html>
