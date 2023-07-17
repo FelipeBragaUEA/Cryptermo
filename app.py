@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import datetime
 import hashlib
 
@@ -45,12 +45,15 @@ class Blockchain:
 
         return True
 
-
 blockchain = Blockchain()
 
 @app.route('/')
 def index():
     return render_template('index.html', chain=blockchain.chain)
+
+@app.route('/lab_results')
+def lab_results():
+    return render_template('lab_results.html', chain=blockchain.chain)
 
 @app.route('/add_record', methods=['POST'])
 def add_record():
@@ -58,6 +61,33 @@ def add_record():
     new_block = Block(len(blockchain.chain), datetime.datetime.now(), data, "")
     blockchain.add_block(new_block)
     return render_template('index.html', chain=blockchain.chain)
+
+@app.route('/save_profile', methods=['POST'])
+def save_profile():
+    name = request.form.get('name')
+    dob = request.form.get('dob')
+    address = request.form.get('address')
+    family_history = request.form.getlist('family-history')
+    personal_history = request.form.getlist('personal-history')
+
+    # Update the Lab Results page with profile and health history information
+    profile_data = f"Name: {name}\nDate of Birth: {dob}\nAddress: {address}"
+    history_data = ""
+
+    if family_history:
+        history_data += "Family Health History:\n"
+        history_data += "\n".join(family_history)
+        history_data += "\n\n"
+    if personal_history:
+        history_data += "Personal Health History:\n"
+        history_data += "\n".join(personal_history)
+
+    combined_data = profile_data + "\n" + history_data
+
+    new_block = Block(len(blockchain.chain), datetime.datetime.now(), combined_data, "")
+    blockchain.add_block(new_block)
+
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
