@@ -71,15 +71,15 @@ def save_profile():
     personal_history = request.form.getlist('personal-history')
 
     # Update the Lab Results page with profile and health history information
-    profile_data = f"Name: {name}\nDate of Birth: {dob}\nAddress: {address}"
+    profile_data = f"*Name: {name}\n*Date of Birth: {dob}\n*Address: {address}"
     history_data = ""
 
     if family_history:
-        history_data += "Family Health History:\n"
+        history_data += "*Family Health History:\n"
         history_data += "\n".join(family_history)
         history_data += "\n\n"
     if personal_history:
-        history_data += "Personal Health History:\n"
+        history_data += "*Personal Health History:\n"
         history_data += "\n".join(personal_history)
 
     combined_data = profile_data + "\n" + history_data
