@@ -4,7 +4,7 @@
   <title>Personal Health Records</title>
   <style>
     body {
-      background-color: #f3f3f3;
+      background-color: #eed9de;
       color: #333;
       font-size: medium;
       font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
     }
 
     header {
-      background-color: #3a7bd5;
+      background-color: #476bac;
       padding: 20px;
       color: #fff;
       text-align: center;
@@ -113,7 +113,7 @@
 
     /* When the checkbox is checked, add a blue background */
     .container input:checked ~ .checkmark {
-      background-color: #2196F3;
+      background-color: #476bac;
     }
 
     /* Create the checkmark/indicator (hidden when not checked) */
@@ -142,7 +142,7 @@
     }
 
     button {
-      background-color: #4CAF50;
+      background-color: #00c3b1;
       color: #fff;
       border: none;
       margin-top: 12px;
@@ -206,7 +206,16 @@
         <input type="text" id="name" name="name" placeholder="Enter your name">
         
         <label for="dob">Date of Birth:</label>
-        <input type="text" id="dob" name="dob" placeholder="Enter your date of birth">
+        <input type="text" id="dob" name="dob" placeholder="Enter your date of birth"
+            onkeyup="
+            var v = this.value;
+            if (v.match(/^\d{2}$/) !== null) {
+                this.value = v + '/';
+            } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                this.value = v + '/';
+            }"
+        maxlength="10"
+        >
         
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" placeholder="Enter your address">
