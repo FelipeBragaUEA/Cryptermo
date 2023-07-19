@@ -7,6 +7,7 @@
             background-color: #f3f3f3;
             color: #333;
             font-family: Arial, sans-serif;
+            font-size: medium;
             margin: 0;
             padding: 0;
         }
@@ -21,8 +22,12 @@
 
         ul {
             list-style-type: none;
-            padding: 0;
+            padding: 10px;
             margin: 20px;
+        }
+
+        ul.sublist {
+            margin-left: 20px;
         }
 
         li {
@@ -33,8 +38,15 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .data-item {
+            padding: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         p {
-            margin: 0;
+            margin: 4px;
             line-height: 1.5;
         }
 
@@ -48,11 +60,19 @@
     <ul>
         {% for block in chain %}
         <li>
-            <p>Index: {{ block.index }}</p>
-            <p>Timestamp: {{ block.timestamp }}</p>
-            <p>Data: {{ block.data }}</p>
-            <p>Previous Hash: {{ block.previous_hash }}</p>
-            <p>Hash: {{ block.hash }}</p>
+            <p><b>Index:</b> {{ block.index }}</p>
+            <p><b>Timestamp:</b> {{ block.timestamp }}</p>
+            <p><b>Previous Hash: </b> {{ block.previous_hash }}</p>
+            <p><b>Hash:</b> {{ block.hash }}</p>
+            <p><b>Data:</b> {{ block.data }}</p>
+
+            {% set data_parts = block.data.split('*') %}
+            <ul class="sublist">
+                {% for item in data_parts[1:] %}
+                <li class="data-item">{{ item }}</li>
+                {% endfor %}
+              </ul>
+            
         </li>
         {% endfor %}
     </ul>
